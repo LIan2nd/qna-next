@@ -53,4 +53,20 @@ export const authConfig = {
       },
     }),
   },
+
+  events: {
+    signIn: async ({ user, isNewUser }) => {
+      if (!isNewUser) return;
+
+      const generatedUsername = user.email?.split("@")[0];
+      await db.user.update({
+        where: {
+          email: user.email!,
+        },
+        data: {
+          username: generatedUsername,
+        }
+      })
+    }
+  }
 } satisfies NextAuthConfig;
