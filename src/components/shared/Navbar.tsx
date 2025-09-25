@@ -1,11 +1,17 @@
 'use client';
 
 import { Button } from "~/components/ui/button"
-import { signIn } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 export const Navbar = () => {
+  const session = useSession();
+
   const handleSignIn = async () => {
     await signIn('google');
+  }
+
+  const handleLogOut = async () => {
+    await signOut();
   }
 
   return (
@@ -13,7 +19,11 @@ export const Navbar = () => {
       <h1>Ls QNA Forum</h1>
 
       <div>
-        <Button onClick={handleSignIn}>Sign In with Google</Button>
+        {session?.data?.user ? (
+          <Button onClick={handleLogOut}>Sign Out</Button>
+        ) : (
+          <Button onClick={handleSignIn}>Sign In with Google</Button>
+        )}
       </div>
     </header>
   )
