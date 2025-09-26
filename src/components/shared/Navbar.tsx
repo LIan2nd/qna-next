@@ -2,6 +2,7 @@
 
 import { Button } from "~/components/ui/button"
 import { signIn, signOut, useSession } from 'next-auth/react'
+import Link from "next/link";
 
 export const Navbar = () => {
   const session = useSession();
@@ -16,7 +17,9 @@ export const Navbar = () => {
 
   return (
     <header className="h-16 flex justify-between py-2 px-6 border-b items-center">
-      <h1>Ls QNA Forum</h1>
+      <Link href={"/"} className="font-bold text-lg">
+        <h1>Ls QNA Forum</h1>
+      </Link>
 
       <div>
         {session?.data?.user ? (

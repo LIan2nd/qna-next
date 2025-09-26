@@ -28,7 +28,9 @@ export default function RootLayout({
         <SessionProvider>
           <TRPCReactProvider>
             <Navbar />
-            {children}
+            <main className="container mx-auto max-w-4xl py-8">
+              {children}
+            </main>
           </TRPCReactProvider>
         </SessionProvider>
       </body>
