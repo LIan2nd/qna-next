@@ -6,7 +6,6 @@ import { PostCard } from "./PostCard"
 export const HomePostList = () => {
   const postsQuery = api.post.getAllPost.useQuery();
 
-
   return (
     <div className="space-y-3">
       <h2 className="text-2xl font-bold">Recent Questions</h2>

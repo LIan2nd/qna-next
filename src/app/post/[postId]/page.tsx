@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { AnswerList } from "~/components/shared/AnswerList";
+import { CreateAnswerCard } from "~/components/shared/CreateAnswerCard";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import { api } from "~/trpc/server";
@@ -40,9 +42,14 @@ export default async function PostDetail({ params }: { params: Promise<{ postId:
         </div>
         <div className="space-y-2">
           <h1 className="font-semibold text-2xl">{postDetail?.title}</h1>
-          <p>{postDetail?.description}</p>
+          <p className="text-justify">{postDetail?.description}</p>
         </div>
       </div>
+
+      {/* Answer Section */}
+      <CreateAnswerCard postId={postId} />
+
+      <AnswerList postId={postId} />
 
     </div>
   )

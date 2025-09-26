@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Badge } from "../ui/badge"
-import { MessageSquareMore } from "lucide-react"
+import { ArrowRight, MessageSquareMore } from "lucide-react"
 
 type PostCardProps = {
   id: string;
@@ -60,8 +60,8 @@ export const PostCard = (props: PostCardProps) => {
           {props.commentCount} Comments
         </div>
 
-        <Link href={postDetailURL} className="text-sm text-primary">
-          View Post
+        <Link href={postDetailURL} className="text-sm text-primary flex items-center gap-1">
+          View Post <ArrowRight />
         </Link>
       </div>
     </div>
